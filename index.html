@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afghani Guesthouse — Kabul</title>
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4540/4540790.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #B28EB9;
+  --primary-dark: #9272A0;
+  --primary-light: #D4BAD8;
+  --accent: #FAB951;
+  --accent-dark: #E09A28;
+  --navy: #1E2646;
+  --bg: #F8F7F7;
+  --white: #FFFFFF;
+  --text: #111111;
+  --muted: #555;
+  --light: #888;
+  --glass: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.15);
+  --shadow-gold: 0 0 60px rgba(250,185,81,0.25);
+  --shadow-purple: 0 0 60px rgba(178,142,185,0.3);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body {
+  font-family:'Poppins',sans-serif;
+  background:#0a0a0f;
+  color:var(--white);
+  overflow-x:hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#111;}
+::-webkit-scrollbar-thumb{background:var(--primary);border-radius:2px;}
+
+/* ════════════════════════════════════
+   NAV
+════════════════════════════════════ */
+nav {
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:70px;
+  padding:0 4rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(10,10,15,0);
+  backdrop-filter:blur(0px);
+  transition:all 0.5s ease;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled {
+  background:rgba(10,10,15,0.9);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(178,142,185,0.15);
+}
+
+.nav-logo {
+  display:flex;align-items:center;gap:12px;text-decoration:none;
+}
+.nav-logo-emblem {
+  width:40px;height:40px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;
+  box-shadow:0 4px 16px rgba(178,142,185,0.4);
+  position:relative;
+  overflow:hidden;
+}
+.nav-logo-emblem::before {
+  content:'';position:absolute;inset:0;
+  background:repeating-conic-gradient(rgba(255,255,255,0.07) 0deg 45deg,transparent 45deg 90deg);
+  background-size:12px 12px;
+}
+.nav-logo-text {font-size:16px;font-weight:600;letter-spacing:-0.01em;color:var(--white);}
+.nav-logo-text span{color:var(--accent);}
+.nav-logo-dari {
+  font-family:'Noto Nastaliq Urdu',serif;
+  font-size:11px;color:rgba(255,255,255,0.4);
+  display:block;line-height:1;margin-top:1px;
+  letter-spacing:0;
+}
+
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a {
+  font-size:13px;font-weight:400;color:rgba(255,255,255,0.6);
+  text-decoration:none;letter-spacing:0.02em;
+  transition:color 0.2s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+  background:var(--accent);transition:width 0.25s;
+}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{width:100%;}
+
+.btn-nav {
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:var(--white);border:none;
+  padding:0.55rem 1.6rem;
+  font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;
+  border-radius:0px;cursor:pointer;text-decoration:none;
+  display:inline-block;
+  box-shadow:0 4px 20px rgba(178,142,185,0.35);
+  transition:all 0.3s;letter-spacing:0.02em;
+}
+.btn-nav:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(178,142,185,0.5);}
+
+/* ════════════════════════════════════
+   HERO — 3D SCENE
+════════════════════════════════════ */
+#hero {
+  position:relative;height:100vh;min-height:700px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  background:radial-gradient(ellipse at 50% 0%,#1e1030 0%,#0a0a0f 60%);
+}
+
+/* Animated Afghan mandala background */
+.hero-mandala {
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:900px;height:900px;
+  opacity:0.07;
+  animation:mandala-spin 80s linear infinite;
+}
+@keyframes mandala-spin{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(360deg);}}
+
+.hero-mandala svg{width:100%;height:100%;}
+
+/* Floating geometric pieces */
+.geo-float {
+  position:absolute;
+  background:linear-gradient(135deg,rgba(178,142,185,0.15),rgba(250,185,81,0.1));
+  border:1px solid rgba(178,142,185,0.2);
+  border-radius:4px;
+  animation:geo-drift linear infinite;
+}
+@keyframes geo-drift{
+  0%{transform:translateY(0) rotate(0deg);opacity:0;}
+  10%{opacity:1;}
+  90%{opacity:1;}
+  100%{transform:translateY(-120vh) rotate(360deg);opacity:0;}
+}
+
+/* 3D Card scene */
+.hero-3d-scene {
+  position:absolute;right:5%;top:50%;
+  transform:translateY(-50%);
+  perspective:1200px;
+  width:420px;height:520px;
+}
+
+.card-3d {
+  width:100%;height:100%;
+  position:relative;
+  transform-style:preserve-3d;
+  transform:rotateY(-12deg) rotateX(5deg);
+  transition:transform 0.6s ease;
+  cursor:pointer;
+}
+.card-3d:hover{transform:rotateY(-6deg) rotateX(2deg) scale(1.02);}
+
+.card-3d-face {
+  position:absolute;inset:0;
+  border-radius:20px;
+  overflow:hidden;
+  background:linear-gradient(135deg,#1a0e2e,#2a1850);
+  border:1px solid rgba(178,142,185,0.25);
+  box-shadow:
+    0 40px 80px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(178,142,185,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.card-3d-image {
+  width:100%;height:60%;
+  object-fit:cover;display:block;
+  background:linear-gradient(135deg,#2a1040,#180c30);
+  position:relative;overflow:hidden;
+}
+
+/* Afghan pattern overlay on card image */
+.card-pattern {
+  position:absolute;inset:0;
+  opacity:0.08;
+  background-image:
+    repeating-linear-gradient(60deg,transparent,transparent 10px,rgba(250,185,81,0.5) 10px,rgba(250,185,81,0.5) 11px),
+    repeating-linear-gradient(-60deg,transparent,transparent 10px,rgba(178,142,185,0.5) 10px,rgba(178,142,185,0.5) 11px);
+}
+
+.card-hotel-icon {
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-size:5rem;opacity:0.5;
+  filter:drop-shadow(0 0 20px rgba(250,185,81,0.4));
+}
+
+.card-3d-body{padding:1.5rem;}
+.card-3d-tag{
+  font-size:10px;font-weight:600;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;
+}
+.card-3d-title{font-size:20px;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+.card-3d-loc{font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:1rem;}
+.card-3d-row{display:flex;justify-content:space-between;align-items:center;}
+.card-3d-price{font-size:22px;font-weight:700;color:var(--accent);}
+.card-3d-price small{font-size:12px;font-weight:300;color:rgba(255,255,255,0.4);}
+.card-3d-stars{color:var(--accent);font-size:12px;letter-spacing:2px;}
+
+/* Floating badges around card */
+.float-badge {
+  position:absolute;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:12px;
+  padding:0.8rem 1.1rem;
+  font-size:12px;
+  color:var(--white);
+  box-shadow:0 8px 32px rgba(0,0,0,0.3);
+  animation:float-badge 4s ease-in-out infinite;
+}
+@keyframes float-badge{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+.float-badge-1{top:-30px;left:-40px;animation-delay:0s;}
+.float-badge-2{bottom:-20px;right:-30px;animation-delay:1.5s;}
+.float-badge-3{top:40%;left:-70px;animation-delay:0.8s;}
+
+.fbadge-icon{font-size:1.3rem;display:block;margin-bottom:0.2rem;}
+.fbadge-val{font-size:16px;font-weight:700;color:var(--accent);line-height:1;}
+.fbadge-label{font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.05em;}
+
+/* Hero content */
+.hero-content {
+  position:relative;z-index:2;
+  max-width:560px;
+  padding:0 4rem;
+  margin-right:auto;
+}
+
+.hero-dari {
+  font-family:'Noto Nastaliq Urdu',serif;
+  font-size:1.1rem;color:rgba(178,142,185,0.7);
+  margin-bottom:1rem;display:block;
+  letter-spacing:0.05em;
+}
+
+.hero-eyebrow {
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.2rem;
+}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--accent);}
+
+.hero-title {
+  font-size:clamp(2.4rem,4.5vw,4rem);
+  font-weight:700;line-height:1.1;
+  letter-spacing:-0.03em;
+  margin-bottom:1.2rem;
+}
+.hero-title .line1{color:var(--white);}
+.hero-title .line2{
+  -webkit-text-stroke:1px var(--primary-light);
+  color:transparent;
+  display:block;
+}
+.hero-title .line3{color:var(--accent);font-size:70%;font-weight:300;display:block;margin-top:0.3rem;letter-spacing:0.01em;}
+
+.hero-desc {
+  font-size:15px;font-weight:300;color:rgba(255,255,255,0.55);
+  line-height:1.8;margin-bottom:2.5rem;
+}
+
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+
+.btn-glow {
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:var(--white);border:none;
+  padding:0.85rem 2.2rem;
+  font-family:'Poppins',sans-serif;font-size:14px;font-weight:500;
+  border-radius:0;cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  box-shadow:0 8px 32px rgba(178,142,185,0.45);
+  transition:all 0.3s;
+  position:relative;overflow:hidden;
+}
+.btn-glow::before{
+  content:'';position:absolute;inset:-2px;
+  background:linear-gradient(135deg,var(--accent),var(--primary));
+  z-index:-1;opacity:0;transition:opacity 0.3s;
+  border-radius:2px;
+}
+.btn-glow:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(178,142,185,0.55);}
+.btn-glow:hover::before{opacity:1;}
+
+.btn-ghost-glow {
+  background:rgba(255,255,255,0.04);
+  color:var(--white);
+  border:1px solid rgba(255,255,255,0.15);
+  padding:0.85rem 2rem;
+  font-family:'Poppins',sans-serif;font-size:14px;font-weight:400;
+  border-radius:0;cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  backdrop-filter:blur(8px);
+  transition:all 0.3s;
+}
+.btn-ghost-glow:hover{
+  border-color:var(--primary-light);background:rgba(178,142,185,0.1);
+  transform:translateY(-2px);
+}
+
+.hero-stats{display:flex;gap:2rem;}
+.hero-stat-item{border-left:2px solid rgba(178,142,185,0.3);padding-left:1rem;}
+.hero-stat-num{font-size:1.8rem;font-weight:700;color:var(--accent);line-height:1;display:block;}
+.hero-stat-label{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.08em;margin-top:0.2rem;}
+
+/* Afghan ornamental divider */
+.ornament-div {
+  width:100%;height:60px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.ornament-div::before,.ornament-div::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(to right,transparent,rgba(178,142,185,0.3),transparent);
+}
+.ornament-diamond{
+  margin:0 1rem;width:12px;height:12px;
+  background:var(--accent);transform:rotate(45deg);
+  box-shadow:0 0 12px rgba(250,185,81,0.5);
+}
+
+/* ════════════════════════════════════
+   MARQUEE
+════════════════════════════════════ */
+.marquee-wrap{
+  background:linear-gradient(90deg,var(--primary-dark),var(--primary),var(--primary-dark));
+  padding:0.8rem 0;overflow:hidden;
+}
+.marquee-track{display:flex;animation:marquee 26s linear infinite;white-space:nowrap;}
+.marquee-item{
+  font-size:11px;font-weight:500;color:var(--white);
+  letter-spacing:0.18em;text-transform:uppercase;
+  padding:0 2rem;display:inline-flex;align-items:center;gap:1.5rem;
+}
+.marquee-gem{
+  display:inline-block;width:5px;height:5px;
+  background:var(--accent);transform:rotate(45deg);
+  box-shadow:0 0 6px rgba(250,185,81,0.6);
+}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ════════════════════════════════════
+   SECTIONS GLOBAL
+════════════════════════════════════ */
+.section{padding:7rem 5rem;}
+.section-dark{background:linear-gradient(160deg,#0a0a0f 0%,#0f0a1a 50%,#0a0a0f 100%);}
+.section-mid{background:linear-gradient(160deg,#0d0a15 0%,#130d20 100%);}
+.section-light{background:var(--bg);color:var(--text);}
+
+.eyebrow {
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1rem;
+}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--accent);}
+
+h2.section-title {
+  font-size:clamp(2rem,3vw,3rem);
+  font-weight:700;line-height:1.1;letter-spacing:-0.02em;
+  margin-bottom:1rem;color:var(--white);
+}
+h2.section-title em{font-style:normal;color:var(--primary-light);}
+h2.section-title .outline{
+  -webkit-text-stroke:1px rgba(178,142,185,0.5);
+  color:transparent;
+}
+
+.section-desc{
+  font-size:15px;font-weight:300;
+  color:rgba(255,255,255,0.5);line-height:1.8;
+  max-width:500px;
+}
+
+/* ════════════════════════════════════
+   ABOUT — Cultural Section
+════════════════════════════════════ */
+#about {
+  position:relative;overflow:hidden;
+}
+#about::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 80% 50%,rgba(178,142,185,0.06) 0%,transparent 60%),
+    radial-gradient(ellipse at 20% 80%,rgba(250,185,81,0.04) 0%,transparent 50%);
+}
+
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:center;position:relative;z-index:1;
+}
+
+/* 3D Afghan Architecture illustration */
+.building-3d-wrap{
+  perspective:1000px;
+  position:relative;
+}
+
+.building-3d {
+  transform-style:preserve-3d;
+  transform:rotateY(8deg) rotateX(-3deg);
+  transition:transform 0.8s ease;
+  position:relative;
+}
+.building-3d:hover{transform:rotateY(4deg) rotateX(-1deg);}
+
+.building-card {
+  background:linear-gradient(160deg,#1a0e2e,#0f0820);
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(178,142,185,0.2);
+  box-shadow:
+    0 60px 120px rgba(0,0,0,0.7),
+    0 0 0 1px rgba(178,142,185,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+  position:relative;
+}
+
+/* Afghan architectural SVG */
+.arch-svg-wrap{
+  padding:3rem 3rem 2rem;
+  background:linear-gradient(180deg,rgba(178,142,185,0.05) 0%,transparent 100%);
+}
+
+.about-info-cards{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;
+  padding:1.5rem;
+  background:rgba(0,0,0,0.2);
+}
+.about-info-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(178,142,185,0.1);
+  border-radius:8px;padding:1rem;
+  text-align:center;
+}
+.about-info-num{font-size:1.6rem;font-weight:700;color:var(--accent);display:block;line-height:1;}
+.about-info-label{font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.2rem;}
+
+/* Floating corner glow */
+.building-glow {
+  position:absolute;bottom:-40px;right:-40px;
+  width:200px;height:200px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(178,142,185,0.2) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+.about-text-side{}
+.about-text-side .section-desc{max-width:100%;}
+.feature-list{list-style:none;margin:2rem 0;display:flex;flex-direction:column;gap:1rem;}
+.feature-item{
+  display:flex;gap:1rem;align-items:flex-start;
+}
+.feature-icon-wrap{
+  width:42px;height:42px;flex-shrink:0;
+  background:rgba(178,142,185,0.1);
+  border:1px solid rgba(178,142,185,0.2);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+  transition:background 0.3s;
+}
+.feature-item:hover .feature-icon-wrap{background:rgba(178,142,185,0.2);}
+.feature-label{font-size:14px;font-weight:500;color:rgba(255,255,255,0.9);margin-bottom:0.2rem;}
+.feature-sub{font-size:12px;font-weight:300;color:rgba(255,255,255,0.4);line-height:1.5;}
+
+/* ════════════════════════════════════
+   ROOMS — 3D Card Grid
+════════════════════════════════════ */
+#rooms{
+  background:linear-gradient(180deg,#0a0a0f 0%,#0d0817 50%,#0a0a0f 100%);
+}
+.rooms-header{text-align:center;margin-bottom:4rem;}
+.rooms-header .section-desc{margin:0 auto;}
+
+.rooms-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+  perspective:1000px;
+}
+
+.room-card-3d {
+  position:relative;
+  transform-style:preserve-3d;
+  transform:translateZ(0);
+  transition:transform 0.5s ease, box-shadow 0.5s ease;
+  border-radius:16px;
+  cursor:pointer;
+  overflow:hidden;
+}
+.room-card-3d:hover{
+  transform:translateY(-12px) rotateX(4deg);
+  box-shadow:0 40px 80px rgba(0,0,0,0.6), var(--shadow-purple);
+}
+.room-card-3d:nth-child(2):hover{
+  box-shadow:0 40px 80px rgba(0,0,0,0.6), var(--shadow-gold);
+}
+
+.room-card-inner{
+  background:linear-gradient(160deg,#1a0e2e,#0f0820);
+  border:1px solid rgba(178,142,185,0.15);
+  border-radius:16px;overflow:hidden;height:100%;
+}
+.room-card-3d:nth-child(2) .room-card-inner{
+  border-color:rgba(250,185,81,0.25);
+  background:linear-gradient(160deg,#1e1208,#120a04);
+}
+
+.room-visual {
+  position:relative;
+  aspect-ratio:16/10;overflow:hidden;
+}
+
+/* 3D room interior illustration via CSS */
+.room-scene {
+  width:100%;height:100%;
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#1a0838,#0a0520);
+}
+.room-scene-2{background:linear-gradient(160deg,#1a0d05,#0f0804);}
+.room-scene-3{background:linear-gradient(160deg,#051824,#030e14);}
+
+.room-floor {
+  position:absolute;bottom:0;left:0;right:0;height:45%;
+  background:linear-gradient(to top,rgba(178,142,185,0.12),transparent);
+  transform-origin:bottom;
+}
+/* Carpet/rug pattern */
+.room-rug {
+  position:absolute;bottom:10%;left:50%;transform:translateX(-50%);
+  width:70%;height:25%;
+  border-radius:4px;
+  background:linear-gradient(135deg,rgba(178,142,185,0.15),rgba(250,185,81,0.1));
+  border:1px solid rgba(250,185,81,0.1);
+}
+.room-rug::before{
+  content:'';position:absolute;inset:4px;
+  border:1px solid rgba(178,142,185,0.15);
+  border-radius:3px;
+}
+.room-window {
+  position:absolute;top:10%;
+  background:linear-gradient(180deg,rgba(250,185,81,0.2),rgba(178,142,185,0.1));
+  border:1px solid rgba(250,185,81,0.25);
+  border-radius:0;
+}
+.room-window::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(250,185,81,0.3),transparent 60%);
+}
+/* Afghan arch shape on window */
+.room-arch {
+  position:absolute;bottom:0;left:0;right:0;height:50%;
+  background:rgba(0,0,0,0.2);
+}
+.room-arch::before{
+  content:'';position:absolute;
+  top:-50%;left:0;right:0;height:100%;
+  background:rgba(0,0,0,0.1);
+  border-radius:50% 50% 0 0;
+}
+
+.room-light-beam {
+  position:absolute;top:0;left:50%;
+  transform:translateX(-50%);
+  width:120px;height:100%;
+  background:linear-gradient(to bottom,rgba(250,185,81,0.12),transparent);
+  clip-path:polygon(30% 0%,70% 0%,100% 100%,0% 100%);
+}
+
+/* Afghan tile pattern on wall */
+.room-tiles {
+  position:absolute;inset:0;
+  opacity:0.04;
+  background-image:
+    repeating-linear-gradient(0deg,rgba(250,185,81,1) 0px,rgba(250,185,81,1) 1px,transparent 1px,transparent 40px),
+    repeating-linear-gradient(90deg,rgba(250,185,81,1) 0px,rgba(250,185,81,1) 1px,transparent 1px,transparent 40px);
+}
+
+/* Glowing orb light */
+.room-orb {
+  position:absolute;top:20%;left:50%;transform:translateX(-50%);
+  width:60px;height:60px;border-radius:50%;
+  background:radial-gradient(circle,rgba(250,185,81,0.4),transparent 70%);
+  animation:orb-pulse 3s ease-in-out infinite;
+}
+@keyframes orb-pulse{0%,100%{transform:translateX(-50%) scale(1);opacity:0.8;}50%{transform:translateX(-50%) scale(1.3);opacity:1;}}
+
+.room-badge-wrap {
+  position:absolute;top:1rem;right:1rem;
+}
+.room-badge {
+  background:var(--accent);color:#000;
+  font-size:10px;font-weight:700;padding:0.3rem 0.7rem;
+  border-radius:50px;letter-spacing:0.08em;
+  display:inline-block;
+}
+.room-badge.pop{background:var(--primary);}
+.room-badge.pop{color:var(--white);}
+
+.room-price-badge {
+  position:absolute;top:1rem;left:1rem;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:8px;padding:0.4rem 0.8rem;
+}
+.room-price-badge strong{font-size:18px;font-weight:700;color:var(--accent);display:block;line-height:1;}
+.room-price-badge small{font-size:10px;color:rgba(255,255,255,0.4);}
+
+.room-card-body{padding:1.5rem;}
+.room-card-type{
+  font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:0.4rem;
+}
+.room-card-name{
+  font-size:18px;font-weight:600;color:var(--white);margin-bottom:0.4rem;
+}
+.room-card-desc{
+  font-size:12px;font-weight:300;color:rgba(255,255,255,0.45);
+  line-height:1.6;margin-bottom:1rem;
+}
+.room-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.2rem;}
+.room-tag-pill{
+  font-size:10px;color:rgba(255,255,255,0.5);
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:0.2rem 0.6rem;border-radius:50px;
+}
+
+.btn-room {
+  width:100%;padding:0.7rem;text-align:center;
+  background:rgba(178,142,185,0.12);
+  border:1px solid rgba(178,142,185,0.25);
+  color:var(--primary-light);
+  font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;border-radius:0;text-decoration:none;display:block;
+  transition:all 0.3s;
+}
+.btn-room:hover{background:var(--primary);color:var(--white);border-color:var(--primary);}
+.room-card-3d:nth-child(2) .btn-room{
+  background:rgba(250,185,81,0.1);border-color:rgba(250,185,81,0.3);
+  color:var(--accent);
+}
+.room-card-3d:nth-child(2) .btn-room:hover{background:var(--accent);color:#000;}
+
+/* ════════════════════════════════════
+   CULTURE STRIP — Afghan Pattern Banner
+════════════════════════════════════ */
+.culture-strip{
+  padding:4rem 5rem;
+  background:linear-gradient(135deg,#1a0838,#0a0520);
+  position:relative;overflow:hidden;
+}
+.culture-strip::before{
+  content:'';position:absolute;inset:0;
+  opacity:0.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M40 5L75 40L40 75L5 40Z' stroke='%23FAB951' stroke-width='1' fill='none'/%3E%3Ccircle cx='40' cy='40' r='15' stroke='%23B28EB9' stroke-width='0.8' fill='none'/%3E%3Cpath d='M40 20L50 30L40 40L30 30Z' stroke='%23FAB951' stroke-width='0.6' fill='none'/%3E%3C/svg%3E");
+}
+
+.culture-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:4rem;flex-wrap:wrap;position:relative;z-index:1;
+}
+.culture-left{flex:1;min-width:280px;}
+.culture-dari-large{
+  font-family:'Noto Nastaliq Urdu',serif;
+  font-size:2.5rem;color:var(--accent);
+  display:block;margin-bottom:0.5rem;
+  opacity:0.8;
+}
+.culture-en{font-size:1.1rem;font-weight:300;color:rgba(255,255,255,0.6);}
+.culture-quote{
+  flex:1;min-width:280px;
+  font-family:'Poppins',sans-serif;font-style:italic;
+  font-size:1.1rem;font-weight:300;
+  color:rgba(255,255,255,0.6);line-height:1.8;
+  border-left:2px solid var(--accent);
+  padding-left:1.5rem;
+}
+.culture-values{
+  display:flex;flex-direction:column;gap:0.8rem;min-width:200px;
+}
+.culture-val{
+  display:flex;align-items:center;gap:0.8rem;
+  font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);
+}
+.culture-val::before{
+  content:'';width:6px;height:6px;background:var(--accent);
+  border-radius:50%;flex-shrink:0;
+}
+
+/* ════════════════════════════════════
+   AMENITIES — Glassmorphism Cards
+════════════════════════════════════ */
+#amenities{
+  background:linear-gradient(180deg,#0a0a0f 0%,#0e0a18 100%);
+}
+.amenities-layout{
+  display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:center;
+}
+.amenities-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+
+.amenity-glass {
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(178,142,185,0.12);
+  border-radius:16px;
+  padding:1.5rem;
+  transition:all 0.4s cubic-bezier(0.23,1,0.32,1);
+  position:relative;overflow:hidden;
+  cursor:default;
+}
+.amenity-glass::before{
+  content:'';position:absolute;
+  top:-50%;left:-50%;width:200%;height:200%;
+  background:radial-gradient(circle at center,rgba(178,142,185,0.08),transparent 60%);
+  opacity:0;transition:opacity 0.4s;
+}
+.amenity-glass:hover{
+  border-color:rgba(178,142,185,0.3);
+  transform:translateY(-4px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.4),var(--shadow-purple);
+}
+.amenity-glass:hover::before{opacity:1;}
+
+.amenity-glass-icon {
+  width:48px;height:48px;
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;
+  margin-bottom:1rem;
+  background:linear-gradient(135deg,rgba(178,142,185,0.2),rgba(178,142,185,0.05));
+  border:1px solid rgba(178,142,185,0.2);
+}
+.amenity-glass-title{font-size:14px;font-weight:600;color:var(--white);margin-bottom:0.4rem;}
+.amenity-glass-desc{font-size:12px;font-weight:300;color:rgba(255,255,255,0.4);line-height:1.6;}
+
+/* ════════════════════════════════════
+   GALLERY — Masonry 3D Grid
+════════════════════════════════════ */
+#gallery{
+  background:linear-gradient(160deg,#0a0a0f,#0f0820);
+  padding:7rem 5rem;
+}
+.gallery-header{text-align:center;margin-bottom:3rem;}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:repeat(2,200px);
+  gap:1rem;
+  perspective:800px;
+}
+
+.gal-cell {
+  border-radius:12px;overflow:hidden;
+  position:relative;cursor:pointer;
+  transition:transform 0.5s ease, box-shadow 0.4s;
+}
+.gal-cell:hover{
+  transform:translateZ(20px) scale(1.03);
+  box-shadow:0 20px 60px rgba(0,0,0,0.6), var(--shadow-purple);
+  z-index:2;
+}
+.gal-cell:nth-child(1){grid-column:1/3;grid-row:1/3;}
+.gal-cell:nth-child(3){grid-column:3;grid-row:1;}
+.gal-cell:nth-child(4){grid-column:4;grid-row:1;}
+.gal-cell:nth-child(5){grid-column:3;grid-row:2;}
+.gal-cell:nth-child(6){grid-column:4;grid-row:2;}
+
+.gal-inner{
+  width:100%;height:100%;
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  font-size:3rem;
+}
+.gal-bg-1{background:linear-gradient(135deg,#1a0838,#2a1050);}
+.gal-bg-2{background:linear-gradient(135deg,#0f1830,#1a2850);}
+.gal-bg-3{background:linear-gradient(135deg,#1a1008,#2a1c08);}
+.gal-bg-4{background:linear-gradient(135deg,#0a1820,#101e2a);}
+.gal-bg-5{background:linear-gradient(135deg,#1a0820,#280a32);}
+.gal-bg-6{background:linear-gradient(135deg,#081818,#0c2020);}
+
+.gal-overlay {
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,0.7),transparent 50%);
+  opacity:0;transition:opacity 0.3s;
+}
+.gal-cell:hover .gal-overlay{opacity:1;}
+.gal-label{
+  position:absolute;bottom:1rem;left:1rem;right:1rem;
+  font-size:13px;font-weight:500;color:var(--white);
+  opacity:0;transform:translateY(8px);
+  transition:all 0.3s;z-index:2;
+}
+.gal-cell:hover .gal-label{opacity:1;transform:translateY(0);}
+
+.gal-pattern {
+  position:absolute;inset:0;opacity:0.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' stroke='%23FAB951' stroke-width='0.8' fill='none'/%3E%3C/svg%3E");
+}
+
+/* ════════════════════════════════════
+   TESTIMONIALS
+════════════════════════════════════ */
+#testimonials{
+  background:linear-gradient(160deg,#0d0817,#0a0a0f);
+}
+.testimonials-header{text-align:center;margin-bottom:3rem;}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+
+.testi-glass {
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(178,142,185,0.12);
+  border-radius:16px;
+  padding:2rem;
+  position:relative;overflow:hidden;
+  transition:all 0.4s ease;
+}
+.testi-glass::after{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--primary),transparent);
+  opacity:0;transition:opacity 0.4s;
+}
+.testi-glass:hover{
+  border-color:rgba(178,142,185,0.25);
+  transform:translateY(-6px);
+  box-shadow:0 24px 48px rgba(0,0,0,0.4);
+}
+.testi-glass:hover::after{opacity:1;}
+
+.testi-open-quote{
+  font-family:'Poppins',serif;font-size:4rem;
+  color:var(--primary);opacity:0.2;line-height:0.6;
+  margin-bottom:1rem;display:block;
+}
+.testi-stars{color:var(--accent);font-size:12px;letter-spacing:2px;margin-bottom:1rem;}
+.testi-text{
+  font-size:13px;font-weight:300;
+  color:rgba(255,255,255,0.6);line-height:1.8;
+  margin-bottom:1.5rem;font-style:italic;
+}
+.testi-author{display:flex;align-items:center;gap:0.8rem;}
+.testi-avatar{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:600;color:var(--white);flex-shrink:0;
+}
+.av1{background:linear-gradient(135deg,var(--primary),var(--primary-dark));}
+.av2{background:linear-gradient(135deg,var(--accent-dark),#c07810);}
+.av3{background:linear-gradient(135deg,var(--navy),#2d3a69);}
+.testi-name{font-size:13px;font-weight:600;color:var(--white);}
+.testi-origin{font-size:11px;color:rgba(255,255,255,0.35);}
+
+/* ════════════════════════════════════
+   LOCATION — Split with glow map
+════════════════════════════════════ */
+#location{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+}
+.location-info{
+  padding:7rem 5rem;
+  background:linear-gradient(160deg,#0a0a0f,#0f0820);
+}
+.location-map-side{
+  background:linear-gradient(135deg,#0f0820,#1a0838);
+  position:relative;overflow:hidden;
+  min-height:600px;display:flex;align-items:center;justify-content:center;
+}
+
+/* Animated map grid */
+.map-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(178,142,185,0.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(178,142,185,0.06) 1px,transparent 1px);
+  background-size:40px 40px;
+  animation:map-pan 20s linear infinite;
+}
+@keyframes map-pan{0%{background-position:0 0;}100%{background-position:40px 40px;}}
+
+/* Glow circles emanating from pin */
+.map-pulse-1,.map-pulse-2,.map-pulse-3{
+  position:absolute;top:50%;left:50%;
+  border-radius:50%;border:1px solid rgba(178,142,185,0.3);
+  transform:translate(-50%,-50%);
+  animation:map-pulse 3s ease-out infinite;
+}
+.map-pulse-1{width:80px;height:80px;animation-delay:0s;}
+.map-pulse-2{width:160px;height:160px;animation-delay:1s;}
+.map-pulse-3{width:250px;height:250px;animation-delay:2s;}
+@keyframes map-pulse{
+  0%{transform:translate(-50%,-50%) scale(0.8);opacity:1;}
+  100%{transform:translate(-50%,-50%) scale(1.2);opacity:0;}
+}
+
+.map-pin-3d{
+  position:relative;z-index:2;text-align:center;
+}
+.map-pin-icon{
+  width:64px;height:64px;border-radius:50% 50% 50% 0;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  transform:rotate(-45deg);
+  margin:0 auto 1.5rem;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:
+    0 12px 32px rgba(178,142,185,0.5),
+    0 0 0 8px rgba(178,142,185,0.1),
+    0 0 0 16px rgba(178,142,185,0.05);
+}
+.map-pin-icon span{transform:rotate(45deg);font-size:1.6rem;}
+.map-card{
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;padding:1.2rem 1.8rem;
+  box-shadow:0 16px 48px rgba(0,0,0,0.4);
+}
+.map-card-title{font-size:15px;font-weight:600;color:var(--white);margin-bottom:0.2rem;}
+.map-card-sub{font-size:12px;color:rgba(255,255,255,0.4);}
+
+.contact-list{list-style:none;display:flex;flex-direction:column;gap:1.5rem;margin:2.5rem 0;}
+.contact-row{display:flex;gap:1rem;align-items:flex-start;}
+.contact-icon-box{
+  width:44px;height:44px;flex-shrink:0;
+  background:rgba(178,142,185,0.1);
+  border:1px solid rgba(178,142,185,0.2);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+}
+.contact-label{font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;}
+.contact-val{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.5;}
+.contact-val a{color:var(--primary-light);text-decoration:none;transition:color 0.2s;}
+.contact-val a:hover{color:var(--accent);}
+
+.times-row{display:flex;gap:1rem;margin-top:2rem;}
+.time-box-dark{
+  flex:1;
+  background:rgba(178,142,185,0.06);
+  border:1px solid rgba(178,142,185,0.15);
+  border-top:2px solid var(--primary);
+  border-radius:12px;padding:1.2rem;text-align:center;
+}
+.time-box-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:var(--primary-light);margin-bottom:0.4rem;}
+.time-box-val{font-size:1.6rem;font-weight:700;color:var(--white);}
+
+/* ════════════════════════════════════
+   BOOKING CTA
+════════════════════════════════════ */
+#booking {
+  padding:7rem 5rem;
+  background:linear-gradient(135deg,#1a0838 0%,#0a0a0f 50%,#1a1408 100%);
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+#booking::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath d='M50 10L90 50L50 90L10 50Z' stroke='%23B28EB9' stroke-width='0.4' fill='none' opacity='0.2'/%3E%3Ccircle cx='50' cy='50' r='25' stroke='%23FAB951' stroke-width='0.3' fill='none' opacity='0.15'/%3E%3C/svg%3E");
+  background-size:100px 100px;
+  opacity:0.04;
+}
+#booking .section-title{color:var(--white);}
+.booking-glow{
+  position:absolute;top:-100px;left:50%;transform:translateX(-50%);
+  width:600px;height:300px;
+  background:radial-gradient(ellipse,rgba(178,142,185,0.12),transparent 70%);
+  pointer-events:none;
+}
+
+.booking-form-dark {
+  display:flex;gap:0.8rem;justify-content:center;
+  margin:2.5rem auto;flex-wrap:wrap;
+  max-width:900px;
+}
+.input-dark {
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(178,142,185,0.2);
+  border-radius:0;
+  padding:0.85rem 1.2rem;
+  font-family:'Poppins',sans-serif;font-size:13px;
+  color:var(--white);outline:none;flex:1;min-width:150px;
+  transition:border-color 0.2s,background 0.2s;
+}
+.input-dark:focus{
+  border-color:var(--primary);background:rgba(178,142,185,0.08);
+}
+.input-dark::placeholder{color:rgba(255,255,255,0.25);}
+select.input-dark option{background:#1a0838;color:var(--white);}
+
+.btn-booking {
+  background:linear-gradient(135deg,var(--accent),var(--accent-dark));
+  color:#000;border:none;
+  padding:0.85rem 2.5rem;
+  font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;
+  border-radius:0;cursor:pointer;white-space:nowrap;
+  box-shadow:0 8px 32px rgba(250,185,81,0.4);
+  transition:all 0.3s;letter-spacing:0.05em;
+}
+.btn-booking:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 48px rgba(250,185,81,0.5);
+}
+
+.booking-note{font-size:12px;color:rgba(255,255,255,0.3);}
+.booking-note a{color:var(--accent);text-decoration:none;}
+
+/* ════════════════════════════════════
+   FOOTER
+════════════════════════════════════ */
+footer{
+  background:#050508;
+  border-top:1px solid rgba(178,142,185,0.08);
+  padding:4rem 5rem 2rem;
+}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;
+  margin-bottom:3rem;padding-bottom:3rem;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.footer-brand-col{}
+.footer-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
+.footer-logo-gem{
+  width:32px;height:32px;border-radius:6px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.footer-brand-name{font-size:15px;font-weight:600;color:var(--white);}
+.footer-brand-desc{
+  font-size:12px;font-weight:300;color:rgba(255,255,255,0.3);
+  line-height:1.7;max-width:240px;margin-bottom:1.5rem;
+}
+.footer-dari{
+  font-family:'Noto Nastaliq Urdu',serif;
+  font-size:1rem;color:rgba(178,142,185,0.4);
+}
+
+.footer-col-title{
+  font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--primary-light);margin-bottom:1.2rem;opacity:0.8;
+}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-links a{
+  font-size:13px;font-weight:300;color:rgba(255,255,255,0.35);
+  text-decoration:none;transition:color 0.2s;
+}
+.footer-links a:hover{color:var(--accent);}
+
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.15);}
+.footer-site{font-size:11px;color:var(--primary);text-decoration:none;letter-spacing:0.05em;}
+
+/* ════════════════════════════════════
+   REVEAL ANIMATIONS
+════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
+.reveal-scale{opacity:0;transform:scale(0.95);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal-scale.visible{opacity:1;transform:scale(1);}
+
+/* ════════════════════════════════════
+   MOBILE
+════════════════════════════════════ */
+@media(max-width:960px){
+  nav{padding:0 1.5rem;}
+  .nav-links{display:none;}
+  .section{padding:4rem 2rem;}
+  #hero{grid-template-columns:1fr;}
+  .hero-3d-scene{display:none;}
+  .hero-content{padding:6rem 2rem 4rem;max-width:100%;}
+  .about-grid{grid-template-columns:1fr;}
+  .rooms-grid{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .gal-cell:nth-child(1){grid-column:1/3;grid-row:auto;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  #location{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}
+  .amenities-layout{grid-template-columns:1fr;}
+  .culture-inner{flex-direction:column;}
+  .booking-form-dark{flex-direction:column;max-width:400px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-emblem">🏨</div>
+    <div>
+      <span class="nav-logo-text">Afghani <span>Guesthouse</span></span>
+      <span class="nav-logo-dari">مهمانخانه افغانی</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#location">Location</a></li>
+  </ul>
+  <a href="#booking" class="btn-nav">Book a room</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <!-- Afghan mandala background -->
+  <div class="hero-mandala">
+    <svg viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <g stroke="#B28EB9" stroke-width="0.5">
+        <polygon points="450,50 850,450 450,850 50,450" stroke="#FAB951" stroke-width="0.8"/>
+        <polygon points="450,100 800,450 450,800 100,450"/>
+        <circle cx="450" cy="450" r="350"/>
+        <circle cx="450" cy="450" r="280"/>
+        <circle cx="450" cy="450" r="180"/>
+        <circle cx="450" cy="450" r="80"/>
+        <g transform="rotate(0,450,450)"><line x1="450" y1="100" x2="450" y2="800"/><line x1="100" y1="450" x2="800" y2="450"/></g>
+        <g transform="rotate(45,450,450)"><line x1="450" y1="100" x2="450" y2="800"/><line x1="100" y1="450" x2="800" y2="450"/></g>
+        <g transform="rotate(22.5,450,450)"><line x1="450" y1="100" x2="450" y2="800"/><line x1="100" y1="450" x2="800" y2="450"/></g>
+        <g transform="rotate(67.5,450,450)"><line x1="450" y1="100" x2="450" y2="800"/><line x1="100" y1="450" x2="800" y2="450"/></g>
+        <polygon points="450,170 530,370 750,370 580,490 640,700 450,570 260,700 320,490 150,370 370,370" stroke="#FAB951" stroke-width="0.6"/>
+        <polygon points="450,230 500,340 620,340 530,410 560,530 450,460 340,530 370,410 280,340 400,340" stroke="#B28EB9" stroke-width="0.5"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Floating geometric particles -->
+  <div id="geo-container"></div>
+
+  <!-- 3D Hotel Card -->
+  <div class="hero-3d-scene">
+    <div class="card-3d" id="hero-card">
+      <div class="card-3d-face">
+        <div class="card-3d-image">
+          <div class="card-pattern"></div>
+          <div class="card-hotel-icon">🏨</div>
+          <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/706206893.jpg?k=304b55c754dd7e6c2a072b958e37c0a12f0ef2e9c3cd45428568c9e6079ae387&o=" 
+               alt="Afghani Guesthouse" 
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.6;"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="card-3d-body">
+          <div class="card-3d-tag">⟡ Kabul · Afghanistan</div>
+          <div class="card-3d-title">Afghani Guesthouse</div>
+          <div class="card-3d-loc">📍 Ankara Road, Kabul</div>
+          <div class="card-3d-row">
+            <div>
+              <div class="card-3d-price">$49 <small>/night</small></div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:2px;">from</div>
+            </div>
+            <div style="text-align:right">
+              <div class="card-3d-stars">★★★★★</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.3);">5.0 rating</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating badges -->
+    <div class="float-badge float-badge-1">
+      <span class="fbadge-icon">🔒</span>
+      <span class="fbadge-val">24/7</span>
+      <span class="fbadge-label">Security</span>
+    </div>
+    <div class="float-badge float-badge-2">
+      <span class="fbadge-icon">✅</span>
+      <span class="fbadge-val">100%</span>
+      <span class="fbadge-label">Verified</span>
+    </div>
+    <div class="float-badge float-badge-3">
+      <span class="fbadge-icon">🍽</span>
+      <span class="fbadge-val">Afghan</span>
+      <span class="fbadge-label">Cuisine</span>
+    </div>
+  </div>
+
+  <!-- Hero content -->
+  <div class="hero-content">
+    <span class="hero-dari">خوش آمدید · Khosh Āmadīd</span>
+    <div class="hero-eyebrow">Kabul's Premier Guesthouse</div>
+    <h1 class="hero-title">
+      <span class="line1">Where Afghan</span>
+      <span class="line2">Warmth Meets</span>
+      <span class="line3">Luxury & Comfort</span>
+    </h1>
+    <p class="hero-desc">Experience the legendary hospitality of Afghanistan in the heart of Kabul — where every guest is family, every room a sanctuary, and every moment an authentic cultural journey.</p>
+    <div class="hero-ctas">
+      <a href="#booking" class="btn-glow">Book a room →</a>
+      <a href="#rooms" class="btn-ghost-glow">Explore rooms</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat-item">
+        <span class="hero-stat-num">★5.0</span>
+        <span class="hero-stat-label">Guest Rating</span>
+      </div>
+      <div class="hero-stat-item">
+        <span class="hero-stat-num">24/7</span>
+        <span class="hero-stat-label">Security</span>
+      </div>
+      <div class="hero-stat-item">
+        <span class="hero-stat-num">$49</span>
+        <span class="hero-stat-label">From / night</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Free Wi-Fi <span class="marquee-gem"></span></span>
+    <span class="marquee-item">24/7 Reception <span class="marquee-gem"></span></span>
+    <span class="marquee-item">Airport Transfer <span class="marquee-gem"></span></span>
+    <span class="marquee-item">Afghan Cuisine <span class="marquee-gem"></span></span>
+    <span class="marquee-item">Secure Premises <span class="marquee-gem"></span></span>
+    <span class="marquee-item">Ankara Rd · Kabul <span class="marquee-gem"></span></span>
+    <span class="marquee-item">afghaniaguesthouse.com <span class="marquee-gem"></span></span>
+    <span class="marquee-item">مهمانخانه افغانی <span class="marquee-gem"></span></span>
+    <span class="marquee-item">Free Wi-Fi <span class="marquee-gem"></span></span>
+    <span class="marquee-item">24/7 Reception <span class="marquee-gem"></span></span>
+    <span class="marquee-item">Airport Transfer <span class="marquee-gem"></span></span>
+    <span class="marquee-item">Afghan Cuisine <span class="marquee-gem"></span></span>
+    <span class="marquee-item">Secure Premises <span class="marquee-gem"></span></span>
+    <span class="marquee-item">Ankara Rd · Kabul <span class="marquee-gem"></span></span>
+    <span class="marquee-item">afghaniaguesthouse.com <span class="marquee-gem"></span></span>
+    <span class="marquee-item">مهمانخانه افغانی <span class="marquee-gem"></span></span>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about" class="section section-dark">
+  <div class="about-grid">
+    <div class="building-3d-wrap reveal">
+      <div class="building-3d">
+        <div class="building-card">
+          <div class="arch-svg-wrap">
+            <!-- Afghan architectural illustration SVG -->
+            <svg viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg" fill="none" width="100%">
+              <!-- Sky gradient -->
+              <rect width="340" height="280" fill="#0a0520"/>
+              <!-- Stars -->
+              <circle cx="30" cy="20" r="1" fill="#FAB951" opacity="0.6"/>
+              <circle cx="80" cy="15" r="0.8" fill="white" opacity="0.4"/>
+              <circle cx="150" cy="10" r="1" fill="#B28EB9" opacity="0.5"/>
+              <circle cx="220" cy="18" r="0.8" fill="white" opacity="0.3"/>
+              <circle cx="300" cy="12" r="1" fill="#FAB951" opacity="0.4"/>
+              <circle cx="320" cy="30" r="0.7" fill="white" opacity="0.3"/>
+
+              <!-- Mountains -->
+              <polygon points="0,180 60,80 120,160 180,60 240,140 300,70 340,130 340,200 0,200" fill="#1a0838" opacity="0.7"/>
+              <polygon points="0,200 80,100 160,170 240,90 340,150 340,200" fill="#200a40" opacity="0.5"/>
+
+              <!-- Main building body -->
+              <rect x="80" y="140" width="180" height="120" fill="#2a1050"/>
+              <rect x="80" y="140" width="180" height="120" stroke="#B28EB9" stroke-width="0.5" opacity="0.3"/>
+
+              <!-- Afghan arched windows (3) -->
+              <g fill="#150830">
+                <!-- Window 1 -->
+                <rect x="97" y="160" width="28" height="40" rx="0"/>
+                <path d="M97 177 Q111 160 125 177" fill="#FAB951" opacity="0.15"/>
+                <rect x="97" y="177" width="28" height="23"/>
+                <!-- Window 2 -->
+                <rect x="156" y="160" width="28" height="40" rx="0"/>
+                <path d="M156 177 Q170 160 184 177" fill="#FAB951" opacity="0.2"/>
+                <rect x="156" y="177" width="28" height="23"/>
+                <!-- Window 3 -->
+                <rect x="215" y="160" width="28" height="40" rx="0"/>
+                <path d="M215 177 Q229 160 243 177" fill="#FAB951" opacity="0.15"/>
+                <rect x="215" y="177" width="28" height="23"/>
+              </g>
+
+              <!-- Window light glows -->
+              <ellipse cx="111" cy="187" rx="12" ry="8" fill="#FAB951" opacity="0.08"/>
+              <ellipse cx="170" cy="185" rx="12" ry="8" fill="#FAB951" opacity="0.12"/>
+              <ellipse cx="229" cy="187" rx="12" ry="8" fill="#FAB951" opacity="0.08"/>
+
+              <!-- Window ornamental bars -->
+              <line x1="111" y1="160" x2="111" y2="200" stroke="#FAB951" stroke-width="0.5" opacity="0.3"/>
+              <line x1="97" y1="180" x2="125" y2="180" stroke="#FAB951" stroke-width="0.5" opacity="0.3"/>
+              <line x1="170" y1="160" x2="170" y2="200" stroke="#FAB951" stroke-width="0.5" opacity="0.3"/>
+              <line x1="156" y1="180" x2="184" y2="180" stroke="#FAB951" stroke-width="0.5" opacity="0.3"/>
+              <line x1="229" y1="160" x2="229" y2="200" stroke="#FAB951" stroke-width="0.5" opacity="0.3"/>
+              <line x1="215" y1="180" x2="243" y2="180" stroke="#FAB951" stroke-width="0.5" opacity="0.3"/>
+
+              <!-- Central grand arch doorway -->
+              <rect x="145" y="200" width="50" height="60" fill="#100625"/>
+              <path d="M145 224 Q170 200 195 224" fill="#200840"/>
+              <rect x="145" y="224" width="50" height="36" fill="#100625"/>
+              <!-- Door glow -->
+              <ellipse cx="170" cy="235" rx="18" ry="12" fill="#FAB951" opacity="0.05"/>
+              <line x1="170" y1="200" x2="170" y2="260" stroke="#FAB951" stroke-width="0.4" opacity="0.2"/>
+
+              <!-- Minarets -->
+              <!-- Left minaret -->
+              <rect x="65" y="100" width="16" height="80" fill="#200840"/>
+              <polygon points="65,100 73,75 81,100" fill="#B28EB9" opacity="0.6"/>
+              <circle cx="73" cy="100" r="4" fill="#FAB951" opacity="0.3"/>
+              <circle cx="73" cy="75" r="2" fill="#FAB951" opacity="0.5"/>
+              <!-- Left min windows -->
+              <rect x="69" y="120" width="8" height="12" rx="0" fill="#150828"/>
+              <path d="M69 127 Q73 120 77 127" fill="#FAB951" opacity="0.15"/>
+              <rect x="69" y="148" width="8" height="12" rx="0" fill="#150828"/>
+              <path d="M69 155 Q73 148 77 155" fill="#FAB951" opacity="0.1"/>
+
+              <!-- Right minaret -->
+              <rect x="259" y="100" width="16" height="80" fill="#200840"/>
+              <polygon points="259,100 267,75 275,100" fill="#B28EB9" opacity="0.6"/>
+              <circle cx="267" cy="100" r="4" fill="#FAB951" opacity="0.3"/>
+              <circle cx="267" cy="75" r="2" fill="#FAB951" opacity="0.5"/>
+              <rect x="263" y="120" width="8" height="12" rx="0" fill="#150828"/>
+              <path d="M263 127 Q267 120 271 127" fill="#FAB951" opacity="0.15"/>
+              <rect x="263" y="148" width="8" height="12" rx="0" fill="#150828"/>
+              <path d="M263 155 Q267 148 271 155" fill="#FAB951" opacity="0.1"/>
+
+              <!-- Dome -->
+              <ellipse cx="170" cy="140" rx="40" ry="12" fill="#1a0838"/>
+              <path d="M130 140 Q170 95 210 140" fill="#2a1055"/>
+              <path d="M130 140 Q170 95 210 140" stroke="#B28EB9" stroke-width="0.5" opacity="0.4"/>
+              <ellipse cx="170" cy="97" rx="8" ry="3" fill="#3a1a60"/>
+              <line x1="170" y1="94" x2="170" y2="82" stroke="#FAB951" stroke-width="1" opacity="0.5"/>
+              <circle cx="170" cy="80" r="3" fill="#FAB951" opacity="0.4"/>
+
+              <!-- Decorative border/frieze -->
+              <rect x="80" y="138" width="180" height="6" fill="#3a1a60"/>
+              <pattern id="frieze" x="0" y="0" width="12" height="6" patternUnits="userSpaceOnUse">
+                <polygon points="6,0 12,3 6,6 0,3" fill="#FAB951" opacity="0.2"/>
+              </pattern>
+              <rect x="80" y="138" width="180" height="6" fill="url(#frieze)"/>
+
+              <!-- Ground / steps -->
+              <rect x="50" y="258" width="240" height="8" fill="#1a0838" opacity="0.8"/>
+              <rect x="70" y="254" width="200" height="6" fill="#200840" opacity="0.6"/>
+              <rect x="90" y="250" width="160" height="6" fill="#250945" opacity="0.5"/>
+
+              <!-- Lantern / light at top -->
+              <ellipse cx="170" cy="260" rx="80" ry="6" fill="#FAB951" opacity="0.04"/>
+
+              <!-- Decorative Islamic pattern band -->
+              <rect x="80" y="200" width="180" height="4" fill="none" stroke="#FAB951" stroke-width="0.4" opacity="0.3"/>
+              <g stroke="#FAB951" stroke-width="0.3" opacity="0.2">
+                <line x1="85" y1="200" x2="85" y2="204"/>
+                <line x1="95" y1="200" x2="95" y2="204"/>
+                <line x1="105" y1="200" x2="105" y2="204"/>
+                <line x1="115" y1="200" x2="115" y2="204"/>
+                <line x1="125" y1="200" x2="125" y2="204"/>
+                <line x1="135" y1="200" x2="135" y2="204"/>
+                <line x1="145" y1="200" x2="145" y2="204"/>
+                <line x1="195" y1="200" x2="195" y2="204"/>
+                <line x1="205" y1="200" x2="205" y2="204"/>
+                <line x1="215" y1="200" x2="215" y2="204"/>
+                <line x1="225" y1="200" x2="225" y2="204"/>
+                <line x1="235" y1="200" x2="235" y2="204"/>
+                <line x1="245" y1="200" x2="245" y2="204"/>
+                <line x1="255" y1="200" x2="255" y2="204"/>
+              </g>
+            </svg>
+          </div>
+          <div class="about-info-cards">
+            <div class="about-info-card">
+              <span class="about-info-num">24/7</span>
+              <div class="about-info-label">Guest Service</div>
+            </div>
+            <div class="about-info-card">
+              <span class="about-info-num">★5.0</span>
+              <div class="about-info-label">Rating</div>
+            </div>
+            <div class="about-info-card">
+              <span class="about-info-num">100%</span>
+              <div class="about-info-label">Secure</div>
+            </div>
+            <div class="about-info-card">
+              <span class="about-info-num">$49</span>
+              <div class="about-info-label">From/night</div>
+            </div>
+          </div>
+        </div>
+        <div class="building-glow"></div>
+      </div>
+    </div>
+
+    <div class="about-text-side">
+      <div class="eyebrow reveal">Our Story</div>
+      <h2 class="section-title reveal reveal-delay-1">The Heart of <em>Afghan</em> <span class="outline">Hospitality</span></h2>
+      <p class="section-desc reveal reveal-delay-2">Situated on Ankara Road in the vibrant heart of Kabul, Afghani Guesthouse is a sanctuary where the legendary warmth of Afghan culture meets modern comfort and security.</p>
+      <p class="section-desc reveal reveal-delay-2" style="margin-top:1rem;">Whether you visit for business, diplomacy, or discovery — you arrive as a guest and leave as family.</p>
+      <ul class="feature-list">
+        <li class="feature-item reveal reveal-delay-1">
+          <div class="feature-icon-wrap">🕌</div>
+          <div><div class="feature-label">Afghan Cultural Immersion</div><div class="feature-sub">Traditional décor, hand-woven carpets, authentic architecture</div></div>
+        </li>
+        <li class="feature-item reveal reveal-delay-2">
+          <div class="feature-icon-wrap">🔒</div>
+          <div><div class="feature-label">Professional Security</div><div class="feature-sub">24/7 on-site security team for complete peace of mind</div></div>
+        </li>
+        <li class="feature-item reveal reveal-delay-3">
+          <div class="feature-icon-wrap">🍽</div>
+          <div><div class="feature-label">Authentic Afghan Cuisine</div><div class="feature-sub">Kabuli pulao, mantu, bolani — prepared fresh daily</div></div>
+        </li>
+      </ul>
+      <a href="#booking" class="btn-glow reveal reveal-delay-3">Reserve Your Stay →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURE STRIP -->
+<div class="culture-strip">
+  <div class="culture-inner">
+    <div class="culture-left">
+      <span class="culture-dari-large">مهمانوازی</span>
+      <span class="culture-en">Mehmān·nawāzī — Afghan Hospitality</span>
+    </div>
+    <blockquote class="culture-quote">
+      "In Afghan culture, a guest is a gift from God. We don't just offer you a room — we offer you our home, our stories, and our warmth."
+    </blockquote>
+    <div class="culture-values">
+      <div class="culture-val">Melmastia — Hospitality</div>
+      <div class="culture-val">Nanawatai — Sanctuary</div>
+      <div class="culture-val">Sabr — Patience & Care</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ROOMS ── -->
+<section id="rooms" class="section">
+  <div class="rooms-header reveal">
+    <div class="eyebrow">Accommodation</div>
+    <h2 class="section-title">Choose Your <em>Room</em></h2>
+    <p class="section-desc">Each space is a thoughtful blend of Afghan artistry and contemporary comfort — designed for the discerning traveller.</p>
+  </div>
+  <div class="rooms-grid">
+
+    <!-- Room 1 -->
+    <div class="room-card-3d reveal">
+      <div class="room-card-inner">
+        <div class="room-visual">
+          <div class="room-scene">
+            <div class="room-tiles"></div>
+            <div class="room-light-beam"></div>
+            <div class="room-window" style="left:20%;width:22%;height:40%;">
+              <div class="room-arch"></div>
+            </div>
+            <div class="room-window" style="right:20%;width:22%;height:35%;">
+              <div class="room-arch"></div>
+            </div>
+            <div class="room-floor"></div>
+            <div class="room-rug"></div>
+            <div class="room-orb"></div>
+          </div>
+          <div class="room-price-badge"><strong>$49</strong><small>/night</small></div>
+          <div class="room-badge-wrap"><div class="room-badge">Available</div></div>
+        </div>
+        <div class="room-card-body">
+          <div class="room-card-type">Standard</div>
+          <div class="room-card-name">Classic Room</div>
+          <div class="room-card-desc">Warm, comfortable, and authentic — perfect for the solo traveller or short stay in Kabul.</div>
+          <div class="room-tags">
+            <span class="room-tag-pill">En-suite Bath</span>
+            <span class="room-tag-pill">Free Wi-Fi</span>
+            <span class="room-tag-pill">City View</span>
+            <span class="room-tag-pill">AC</span>
+          </div>
+          <a href="#booking" class="btn-room">Book a room</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Room 2 — Featured -->
+    <div class="room-card-3d reveal reveal-delay-1">
+      <div class="room-card-inner">
+        <div class="room-visual">
+          <div class="room-scene room-scene-2">
+            <div class="room-tiles"></div>
+            <div class="room-light-beam" style="background:linear-gradient(to bottom,rgba(250,185,81,0.18),transparent);"></div>
+            <div class="room-window" style="left:15%;width:28%;height:45%;">
+              <div class="room-arch"></div>
+            </div>
+            <div class="room-window" style="right:15%;width:28%;height:45%;">
+              <div class="room-arch"></div>
+            </div>
+            <div class="room-floor" style="background:linear-gradient(to top,rgba(250,185,81,0.1),transparent);"></div>
+            <div class="room-rug" style="background:linear-gradient(135deg,rgba(250,185,81,0.2),rgba(178,142,185,0.15));height:30%;"></div>
+            <div class="room-orb" style="background:radial-gradient(circle,rgba(250,185,81,0.5),transparent 70%);width:80px;height:80px;"></div>
+          </div>
+          <div class="room-price-badge"><strong>$85</strong><small>/night</small></div>
+          <div class="room-badge-wrap"><div class="room-badge pop">Most Popular</div></div>
+        </div>
+        <div class="room-card-body">
+          <div class="room-card-type" style="color:var(--accent);">Deluxe</div>
+          <div class="room-card-name">Afghan Heritage Suite</div>
+          <div class="room-card-desc">Hand-woven kilims, carved woodwork, and a king-size bed — immersed in Afghan heritage.</div>
+          <div class="room-tags">
+            <span class="room-tag-pill">King Bed</span>
+            <span class="room-tag-pill">Lounge Area</span>
+            <span class="room-tag-pill">Artisan Décor</span>
+            <span class="room-tag-pill">Minibar</span>
+          </div>
+          <a href="#booking" class="btn-room">Book a room</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Room 3 -->
+    <div class="room-card-3d reveal reveal-delay-2">
+      <div class="room-card-inner">
+        <div class="room-visual">
+          <div class="room-scene room-scene-3">
+            <div class="room-tiles"></div>
+            <div class="room-light-beam" style="background:linear-gradient(to bottom,rgba(178,142,185,0.18),transparent);width:160px;"></div>
+            <div class="room-window" style="left:10%;width:35%;height:50%;">
+              <div class="room-arch"></div>
+            </div>
+            <div class="room-window" style="right:10%;width:18%;height:38%;">
+              <div class="room-arch"></div>
+            </div>
+            <div class="room-floor" style="background:linear-gradient(to top,rgba(178,142,185,0.1),transparent);"></div>
+            <div class="room-rug" style="background:linear-gradient(135deg,rgba(178,142,185,0.2),rgba(30,38,70,0.3));width:80%;height:28%;"></div>
+            <div class="room-orb" style="background:radial-gradient(circle,rgba(178,142,185,0.5),transparent 70%);width:90px;height:90px;"></div>
+          </div>
+          <div class="room-price-badge"><strong>$140</strong><small>/night</small></div>
+          <div class="room-badge-wrap"><div class="room-badge">Premium</div></div>
+        </div>
+        <div class="room-card-body">
+          <div class="room-card-type">Executive</div>
+          <div class="room-card-name">Executive Suite</div>
+          <div class="room-card-desc">Panoramic Kabul views, private dining, and VIP concierge service for the most discerning guests.</div>
+          <div class="room-tags">
+            <span class="room-tag-pill">Panoramic View</span>
+            <span class="room-tag-pill">Private Dining</span>
+            <span class="room-tag-pill">VIP Service</span>
+            <span class="room-tag-pill">Workspace</span>
+          </div>
+          <a href="#booking" class="btn-room">Book a room</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AMENITIES ── -->
+<section id="amenities" class="section">
+  <div class="amenities-layout">
+    <div>
+      <div class="eyebrow reveal">Facilities</div>
+      <h2 class="section-title reveal reveal-delay-1">Everything <em>You</em> <span class="outline">Need</span></h2>
+      <p class="section-desc reveal reveal-delay-2">From the moment you arrive to the moment you depart, every detail is curated for your comfort, security, and delight.</p>
+      <div style="margin-top:2.5rem;" class="reveal reveal-delay-3">
+        <a href="tel:+93730888835" class="btn-glow">Call: +93 73 088 8835</a>
+      </div>
+    </div>
+    <div class="amenities-grid">
+      <div class="amenity-glass reveal">
+        <div class="amenity-glass-icon">🍽</div>
+        <div class="amenity-glass-title">Afghan Cuisine</div>
+        <div class="amenity-glass-desc">Traditional kabuli pulao, mantu, bolani — prepared fresh with authentic spices daily.</div>
+      </div>
+      <div class="amenity-glass reveal reveal-delay-1">
+        <div class="amenity-glass-icon">📡</div>
+        <div class="amenity-glass-title">High-Speed Wi-Fi</div>
+        <div class="amenity-glass-desc">Complimentary high-speed internet throughout the entire property.</div>
+      </div>
+      <div class="amenity-glass reveal reveal-delay-1">
+        <div class="amenity-glass-icon">🚗</div>
+        <div class="amenity-glass-title">Airport Transfer</div>
+        <div class="amenity-glass-desc">Safe, reliable transport to and from Kabul International Airport.</div>
+      </div>
+      <div class="amenity-glass reveal reveal-delay-2">
+        <div class="amenity-glass-icon">🔒</div>
+        <div class="amenity-glass-title">24/7 Security</div>
+        <div class="amenity-glass-desc">Professional on-site security team providing complete peace of mind.</div>
+      </div>
+      <div class="amenity-glass reveal">
+        <div class="amenity-glass-icon">🛎</div>
+        <div class="amenity-glass-title">Concierge</div>
+        <div class="amenity-glass-desc">Available at all hours to assist with any request, arrangement or enquiry.</div>
+      </div>
+      <div class="amenity-glass reveal reveal-delay-1">
+        <div class="amenity-glass-icon">🧼</div>
+        <div class="amenity-glass-title">Daily Housekeeping</div>
+        <div class="amenity-glass-desc">Meticulous daily room service with fresh linen and spotless cleanliness.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section id="gallery">
+  <div class="gallery-header reveal">
+    <div class="eyebrow">Visual Journey</div>
+    <h2 class="section-title">A <em>Glimpse</em> of <span class="outline">Afghani</span></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gal-cell reveal">
+      <div class="gal-inner gal-bg-1">
+        <div class="gal-pattern"></div>
+        🏨
+        <div class="gal-overlay"></div>
+        <div class="gal-label">The Guesthouse — Ankara Rd, Kabul</div>
+      </div>
+    </div>
+    <div class="gal-cell reveal reveal-delay-1" style="display:none;"></div>
+    <div class="gal-cell reveal reveal-delay-1">
+      <div class="gal-inner gal-bg-2">
+        <div class="gal-pattern"></div>
+        🕌
+        <div class="gal-overlay"></div>
+        <div class="gal-label">Afghan Architecture</div>
+      </div>
+    </div>
+    <div class="gal-cell reveal reveal-delay-2">
+      <div class="gal-inner gal-bg-3">
+        <div class="gal-pattern"></div>
+        🍽
+        <div class="gal-overlay"></div>
+        <div class="gal-label">Traditional Cuisine</div>
+      </div>
+    </div>
+    <div class="gal-cell reveal reveal-delay-1">
+      <div class="gal-inner gal-bg-4">
+        <div class="gal-pattern"></div>
+        🛏
+        <div class="gal-overlay"></div>
+        <div class="gal-label">Heritage Suite Interior</div>
+      </div>
+    </div>
+    <div class="gal-cell reveal reveal-delay-2">
+      <div class="gal-inner gal-bg-6">
+        <div class="gal-pattern"></div>
+        🌙
+        <div class="gal-overlay"></div>
+        <div class="gal-label">Kabul at Night</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials" class="section">
+  <div class="testimonials-header reveal">
+    <div class="eyebrow">Guest Stories</div>
+    <h2 class="section-title">What Our <em>Guests</em> Say</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-glass reveal">
+      <span class="testi-open-quote">"</span>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">The most welcoming guesthouse I've stayed at in Afghanistan. The staff treated us like family. Immaculate rooms, extraordinary food, and the Afghan cultural touches made every moment memorable.</p>
+      <div class="testi-author">
+        <div class="testi-avatar av1">JR</div>
+        <div>
+          <div class="testi-name">James R.</div>
+          <div class="testi-origin">Journalist · United Kingdom</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-glass reveal reveal-delay-1">
+      <span class="testi-open-quote">"</span>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">A true gem on Ankara Road. The security was excellent and the traditional décor transported me into Afghan culture beautifully. I felt completely safe and genuinely cared for.</p>
+      <div class="testi-author">
+        <div class="testi-avatar av2">SM</div>
+        <div>
+          <div class="testi-name">Sarah M.</div>
+          <div class="testi-origin">NGO Worker · Canada</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-glass reveal reveal-delay-2">
+      <span class="testi-open-quote">"</span>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">I return to Afghani Guesthouse every trip to Kabul. There is no other place that feels this safe, comfortable, and genuinely hospitable. It truly embodies melmastia.</p>
+      <div class="testi-author">
+        <div class="testi-avatar av3">AK</div>
+        <div>
+          <div class="testi-name">Ahmed K.</div>
+          <div class="testi-origin">Business Executive · UAE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOCATION ── -->
+<section id="location" style="padding:0;">
+  <div class="location-info">
+    <div class="eyebrow reveal">Find Us</div>
+    <h2 class="section-title reveal reveal-delay-1">In the Heart of <em>Kabul</em></h2>
+    <ul class="contact-list">
+      <li class="contact-row reveal reveal-delay-1">
+        <div class="contact-icon-box">📍</div>
+        <div>
+          <div class="contact-label">Address</div>
+          <div class="contact-val">Ankara Road, Kabul, Afghanistan<br><small style="font-size:11px;color:rgba(255,255,255,0.25);">Plus Code: G5JG+HF Kabul</small></div>
+        </div>
+      </li>
+      <li class="contact-row reveal reveal-delay-2">
+        <div class="contact-icon-box">📞</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-val"><a href="tel:+93730888835">+93 73 088 8835</a></div>
+        </div>
+      </li>
+      <li class="contact-row reveal reveal-delay-2">
+        <div class="contact-icon-box">🌐</div>
+        <div>
+          <div class="contact-label">Website</div>
+          <div class="contact-val"><a href="https://afghaniaguesthouse.com" target="_blank">afghaniaguesthouse.com</a></div>
+        </div>
+      </li>
+    </ul>
+    <div class="times-row reveal">
+      <div class="time-box-dark">
+        <div class="time-box-label">Check-In</div>
+        <div class="time-box-val">2:00 PM</div>
+      </div>
+      <div class="time-box-dark">
+        <div class="time-box-label">Check-Out</div>
+        <div class="time-box-val">11:30 AM</div>
+      </div>
+    </div>
+  </div>
+  <div class="location-map-side">
+    <div class="map-grid"></div>
+    <div class="map-pulse-1"></div>
+    <div class="map-pulse-2"></div>
+    <div class="map-pulse-3"></div>
+    <div class="map-pin-3d">
+      <div class="map-pin-icon"><span>🏨</span></div>
+      <div class="map-card">
+        <div class="map-card-title">Afghani Guesthouse</div>
+        <div class="map-card-sub">Ankara Rd · G5JG+HF · Kabul, AF</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BOOKING ── -->
+<section id="booking">
+  <div class="booking-glow"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="eyebrow reveal" style="justify-content:center;">Reserve Your Stay</div>
+    <h2 class="section-title reveal reveal-delay-1">Begin Your <em>Afghan</em> Journey</h2>
+    <p class="section-desc reveal reveal-delay-2" style="margin:0 auto;">Fill in your details and our team will confirm your reservation within 24 hours.</p>
+    <div class="booking-form-dark reveal reveal-delay-2">
+      <input type="text" class="input-dark" placeholder="Your Full Name">
+      <input type="date" class="input-dark">
+      <input type="date" class="input-dark">
+      <select class="input-dark">
+        <option>Classic Room — $49/night</option>
+        <option>Heritage Suite — $85/night</option>
+        <option>Executive Suite — $140/night</option>
+      </select>
+      <button class="btn-booking" onclick="alert('شکریه! Shukria!\n\nThank you for your booking request.\nWe will contact you shortly to confirm.\n\n📞 +93 73 088 8835\n🌐 afghaniaguesthouse.com')">Book a room →</button>
+    </div>
+    <p class="booking-note reveal reveal-delay-3">Or call us directly at <a href="tel:+93730888835">+93 73 088 8835</a></p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand-col">
+      <div class="footer-logo-row">
+        <div class="footer-logo-gem">🏨</div>
+        <span class="footer-brand-name">Afghani Guesthouse</span>
+      </div>
+      <p class="footer-brand-desc">A sanctuary of Afghan warmth and refinement on Ankara Road, Kabul. Your comfort is our highest honour — مهمانوازی</p>
+      <div class="footer-dari">مهمانخانه افغانی</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Explore</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#rooms">Rooms & Suites</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Information</div>
+      <ul class="footer-links">
+        <li><a href="#booking">Book a Room</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Stay</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="tel:+93730888835">+93 73 088 8835</a></li>
+        <li><a href="https://afghaniaguesthouse.com" target="_blank">afghaniaguesthouse.com</a></li>
+        <li><a href="#">Ankara Rd, Kabul</a></li>
+        <li><a href="#">G5JG+HF Kabul</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Afghani Guesthouse · All rights reserved · مهمانخانه افغانی</span>
+    <a href="https://afghaniaguesthouse.com" class="footer-site" target="_blank">afghaniaguesthouse.com</a>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// 3D card mouse tilt
+const card = document.getElementById('hero-card');
+if(card){
+  document.addEventListener('mousemove', e => {
+    const rect = card.parentElement.getBoundingClientRect();
+    if(rect.width === 0) return;
+    const cx = rect.left + rect.width/2, cy = rect.top + rect.height/2;
+    const dx = (e.clientX - cx) / rect.width;
+    const dy = (e.clientY - cy) / rect.height;
+    card.style.transform = `rotateY(${-12 + dx*8}deg) rotateX(${5 - dy*6}deg)`;
+  });
+}
+
+// Floating geometric particles
+const geoContainer = document.getElementById('geo-container');
+const shapes = ['▲','◆','●','■'];
+function spawnGeo(){
+  const el = document.createElement('div');
+  el.className = 'geo-float';
+  const size = 8 + Math.random()*20;
+  el.style.cssText = `
+    left:${Math.random()*100}%;
+    bottom:-60px;
+    width:${size}px;
+    height:${size}px;
+    opacity:${0.1 + Math.random()*0.2};
+    animation-duration:${8 + Math.random()*12}s;
+    animation-delay:${Math.random()*4}s;
+    transform:rotate(${Math.random()*360}deg);
+    border-radius:${Math.random()>0.5?'4px':'50%'};
+  `;
+  geoContainer.appendChild(el);
+  setTimeout(() => el.remove(), 20000);
+}
+setInterval(spawnGeo, 1200);
+for(let i=0;i<6;i++) setTimeout(spawnGeo, i*400);
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+    }
+  });
+}, {threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-scale').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
